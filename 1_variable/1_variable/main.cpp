@@ -167,7 +167,7 @@ int main()
 
 
 
-	printf("%d", day hour min sec);
+	//printf("%d", i2);
 
 	
 
