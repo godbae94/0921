@@ -9,6 +9,12 @@
 // 3. 어셈블(Assemble) 단계 : 어셈블리 코드들을 실제 기계어로 이루어진 목적 코드(Object file)로 변환하는 단계
 // 4. 링킹(Linking) 단계 : 각각의 목적 코드들을 한데 모아서 하나의 실행 파일을 생성하는 단계
 
+#define LEVEL_1_REWARD_10 0b00000001;//1
+#define LEVEL_1_REWARD_20 0b00000010;//2
+#define LEVEL_1_REWARD_30 0b00000100;//4
+#define LEVEL_1_REWARD_40 0b00001000;//8
+#define LEVEL_1_REWARD_50 0b00010000;//16
+#define LEVEL_1_REWARD_60 0b00100000;//32
 
 
 
@@ -263,17 +269,24 @@ int main()
 	//+0b11010100
 	// 0b01100001
 	
-	bitResult = ~0b11010100;
-	std::cout << std::bitset<8>(bitResult) << std::endl;
 	
-	//10레벨 달성 보상
-	bool isGetLevel10Reward = false;//-> ture
-	//20레발 달성 보상
-	bool isGetLevel20Reward = false;
-	//30레벨 달성 보상
-	bool isGetLevel30Reward = false;
-	//40레벨 달성 보상
-	bool isGetLevel40Reward = false;
+	
+	char MyReward = 0b00000000;
+    // 비트 1로 설정
+	MyReward = MyReward | LEVEL_1_REWARD_10;
+	std::cout << "MyReward Enable= " << std::bitset<8>(MyReward) << std::endl;
+
+	// 비트가 활성화 되어있는지 체크
+	bool isEnable = false;
+	isEnable = MyReward & LEVEL_1_REWARD_10;
+	std::cout << "MyReward Check= " << isEnable << std::endl;
+
+	//비트 0으로 설정
+	MyReward = MyReward & ~LEVEL_1_REWARD_10;
+	//0b10110011
+	//0b11111101
+	//0b10110001
+	std::cout << "MyReward Disable= " << std::bitset<8>(MyReward) << std::endl;
 
 
 
