@@ -154,20 +154,16 @@ int main()
 	
 	unsigned int day = 0, hour = 0, min = 0, sec = 0;
 	
-	sec = 987654321;
+	 sec = total_sec % 60;//0~59
 	
-	 min = sec / 60;
-     sec = sec % 60;
+	 min = (total_sec / 60) % 60;
+
+	 hour = ((total_sec / 60) / 60)%24;
+
+	 day = (((total_sec / 60) / 60) / 24);
+
 	
-	 hour = min / 60;
-     min = min % 60;
-	 
-	 day = hour / 24;
-	 hour = hour % 24;
-
-
-
-	//printf("%d", i2);
+	 //printf("%d", i2);
 
 	
 
