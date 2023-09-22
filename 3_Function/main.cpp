@@ -50,6 +50,12 @@ unsigned int CalculatorRemain(int x, int y)
 	printf("함수 끝났다.\n");
 }//->함수 끝
 
+unsigned int CalculatorSUPER(int x, int y)
+{//-> 함수 시작
+	return (x*x+ y*y)*(x + y);//<-반환 및 종료 처리
+
+	printf("함수 끝났다.\n");
+}//->함수 끝
 
 
 void CallFunction()
@@ -59,19 +65,20 @@ void CallFunction()
 
 int main()
 {
-	unsigned int nResult = 0;
+	unsigned int nResult = 0, e = 0;
 	float  a = 0, b = 0, c = 0, d = 0;
 	nResult = CalculatorSum(1, 1);
 	a = CalculatorMinus(20, 10);
 	b = CalculatorMultiply(2, 3);
 	c = CalculatorDivide(10, 3);
 	d = CalculatorRemain(10, 3);
-
+	e = CalculatorSUPER(10, 2);
 	printf("더하기 실행 결과 = %d\n", nResult);
 	printf("빼기 실행 결과 = %f\n", a);
 	printf("곱하기 실행 결과 = %f\n", b);
 	printf("나누기 실행 결과 = %f\n", c);
 	printf("나머지 실행 결과 = %f\n", d);
+	printf("수퍼함수 실행 결과 = %d\n", e);
 	printf("함수 종료!\n");
 	CallFunction();
 }
