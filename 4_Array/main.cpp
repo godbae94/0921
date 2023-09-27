@@ -23,6 +23,89 @@ int num1, num2;
 #include "money.h"
 #include "calcfunc.h"
 
+struct fruitShop
+{
+	//구조체 내부 선언한 변수는 구조체가 사라지지 않으면 안사라진다.
+	int appleA;
+	int mangoA;
+	int strawberryA;
+	
+	//구조체 생성자 ":"이 구문 오른쪽에 변수에 초기값을 셋팅한다
+	fruitShop() : appleA(1000), mangoA(1000), strawberryA(1000)
+	{
+
+	}
+
+	//구조체에 함수 생성
+	void SetFruitValue(int apple, int mango, int strawberry)
+	{
+		appleA = apple;
+		mangoA = mango;
+		strawberryA = strawberry;
+	}
+
+	void printShopValue()
+	{
+		printf("과일가게 가격 사과:%d, 망고:%d, 딸기:%d\n", appleA, mangoA, strawberryA);
+	}
+
+};
+
+struct PhoneShop
+{
+	int numberA;
+	int iPhoneA;
+	int zFlipA;
+	int GalaxyS23A;
+	int GalaxyFoldA;
+		
+	PhoneShop() : numberA(0), iPhoneA(100), zFlipA(100), GalaxyS23A(100), GalaxyFoldA(100)
+	{
+
+	}
+
+	void SetPhoneValue(int number, int iPhone, int zFlip, int GalaxyS23, int GalaxyFold)
+	{
+		numberA = number;
+		iPhoneA = iPhone;
+		zFlipA = zFlip;
+		GalaxyS23A = GalaxyS23;
+		GalaxyFoldA = GalaxyFold;
+	}
+
+	void printPhoneValue()
+	{
+		printf("핸드폰가게%d 가격 아이폰 : % d, 제트플립 : % d, 갤럭시에스23 : % d, 갤럭시폴드 : %d\n", numberA, iPhoneA, zFlipA, GalaxyS23A, GalaxyFoldA);
+		
+	}
+
+
+};
+
+
+
+
+
+int Add(int a, int b)
+{
+	printf("int형 Add가 사용되었습니다.\n");
+	return a + b;
+}
+
+float Add(float a, float b)
+{
+	printf("float형 Add가 사용되었습니다.\n");
+	return a + b;
+}
+
+double Add(double a, double b)
+{
+	printf("double형 Add가 사용되었습니다.\n");
+	return a + b;
+}
+
+
+
 int main()
 {
 	//int t_money = 0;//지역 변수
@@ -34,72 +117,64 @@ int main()
 
 	//printf("main t_money=%d\n", t_money);
 	//printf("main g_money=%d\n", g_money);
+	//printf("sum =%d\n", AddNum(1, 2));
+	//printf("multi=%d\n", MultiplyNum(1, 2));
 
-	bool bRun = true;
-	while (bRun)
+	//Add(1, 1);
+	//Add(1.0f, 1.0f);//f를 붙이고 실수를 쓰면 float형
+	//Add(1.0, 1.0);//f를 붙이지 않고 실수를 쓰면 double형
+
+	//배열
+	
+	//int arrint[10] = { 0 };//배열 생성 및 전부 0으로 초기화
+	//int arrint[10] = { 0, };//배열 생성 및 전부 0으로 초기화
+	//int arrint[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };//배열 생성 및 각각에 배열에 초기값을 넣는 방법
+	//arrint[0] = 10;//배열 1번째에 값 넣기
+	//arrint[4] = 40;//배열 5번째에 값 넣기
+	//arrint[9] = 90;//0번 부터 배열이 시작 되므로 10번째는 9번이다
+
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	printf("%d번째 배열 값은 %d입니다\n", i, arrint[i]);// 2개 이상의 파라메타 출력
+	//	arrint[i];
+	//}
+
+	//int number = 0;
+	//for (int value : arrint)//for each문
+	//{
+	//	printf("for each %d번째 배열 값은 %d입니다\n", number, value);
+	//	number++;
+	//}
+
+	// struct에 사용
+	// fruitShop : 변수형
+	// shop : 변수의 이름
+	//fruitShop shop[3];
+
+	//// struct 함수 사용법
+	//shop[0].SetFruitValue(1000, 2000, 3000);
+	//shop[1].SetFruitValue(1100, 2100, 3100);
+	//shop[2].SetFruitValue(900, 1900, 2900);
+	//
+	//for (fruitShop stValue : shop)
+	//{
+	//	stValue.printShopValue();
+	//}
+
+	PhoneShop shop[3];
+
+	shop[0].SetPhoneValue(1, 100, 90, 80, 150);
+	shop[1].SetPhoneValue(2, 110, 100, 90, 160);
+	shop[2].SetPhoneValue(3, 90, 80, 70, 140);
+	
+	for (PhoneShop value : shop)
 	{
-		int ninput = 0;
-		int num1, num2;
-
-		printf("어떤 연산을 하시겠습니까?(0:더하기, 1:빼기, 2:곱하기, 3:나누기, 4:나머지:");
-
-		scanf_s("%d", &ninput);
-		switch (ninput)
-		{
-		case 0://더하기
-		{
-			printf("숫자 2개를 입력하세요(num1 num2):");
-			scanf_s("%d %d", &num1, &num2);
-			printf("두수의 합은 %d입니다.\n", AddNum(num1, num2));
-		}
-		break;
-
-		case 1://빼기
-		{
-			printf("숫자 2개를 입력하세요(num1 num2):");
-			scanf_s("%d %d", &num1, &num2);
-			printf("두수의 빼기는 %d입니다.\n", MinusNum(num1, num2));
-		}
-		break;
-
-		case 2://곱하기
-		{
-			printf("숫자 2개를 입력하세요(num1 num2):");
-			scanf_s("%d %d", &num1, &num2);
-			printf("두수의 곱은 %d입니다.\n", MultiplyNum(num1, num2));
-		}
-		break;
-
-		case 3://나누기
-		{
-			printf("숫자 2개를 입력하세요(num1 num2):");
-			scanf_s("%f %f", &num1, &num2);
-			printf("두수의 나누기는 %d입니다.\n", DivideNum(num1, num2));
-		}
-		break;
-
-		case 4://나머지
-		{
-			printf("숫자 2개를 입력하세요(num1 num2):");
-			scanf_s("%d %d", &num1, &num2);
-			printf("두수의 나머지는 %d입니다.\n", RemainNum(num1, num2));
-		}
-		break;
-
-
-		printf("계산기를 종료하시겠습니까?(0:no 1:yes)\n");
-		scanf_s("%d", &ninput);
-
-		switch (ninput)
-		{
-		case 1:
-			bRun = false;
-			break;
-		}
-		}
-
-		return 0;
-
+		value.printPhoneValue();
 	}
 
+
+
+
+
+	
 }
