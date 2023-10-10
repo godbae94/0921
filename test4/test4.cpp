@@ -1,12 +1,6 @@
 #include<stdio.h>
 #include<iostream>
 
-enum InputType
-{
-    Quit = 0,
-    Start,
-    
-};
 
 float standardWeight(float height)
 {
@@ -27,21 +21,39 @@ int main()
 
     while (bRun)
     {
-        InputType nInput = InputType::Quit;
-        int a = 0, b = 0;
         printf("BMI를 계산하시겠습니까? 0)NO 1)YES : ");
-        scanf_s("%d", &nInput);
+        int input = 0;
+        scanf_s("%d", &input);
 
         
-        switch (nInput)
+        switch (input)
         {
-        case InputType::Quit:
+        case 0:
             bRun = false;
             break;
 
-        case InputType::Start:
-            ScanfinputNum(a, b);
-            printf("\nSum 결과는 %d 입니다.\n", cSum(a, b));
+        case 1:
+        {
+            int weight = 0, height = 0, BMI = 0;
+            printf("몸무게를 입력해주세요 : ");
+            scanf_s("%d", &weight);
+            printf("키를 입력해주세요 : ");
+            scanf_s("%d", &height);
+            BMI = GetBMI(weight, standardWeight(height));
+
+            if (10 <= BMI)
+            {
+                printf("정상\n");
+            }
+            else if (10 < BMI && BMI <= 20)
+            {
+                printf("과체중\n");
+            }
+            else if (20 < BMI)
+            {
+                printf("과체중\n");
+            }
+        }
             break;
 
         default:

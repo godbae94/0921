@@ -1,3 +1,7 @@
 ﻿  main.cpp
-D:\works\0921\1_variable\1_variable\main.cpp(46,6): error C2374: 'A': 재정의. 여러 번 초기화했습니다.
-D:\works\0921\1_variable\1_variable\main.cpp(45,6): message : 'A' 선언을 참조하십시오.
+D:\works\0921\1_variable\1_variable\main.cpp(29,16): warning C4101: 'uc' :참조되지 않은 지역 변수입니다.
+D:\works\0921\1_variable\1_variable\main.cpp(47,15): warning C4101: 'uA' :참조되지 않은 지역 변수입니다.
+D:\works\0921\1_variable\1_variable\main.cpp(34,8): warning C4101: 's' :참조되지 않은 지역 변수입니다.
+D:\works\0921\1_variable\1_variable\main.cpp(37,7): warning C4101: 'l' :참조되지 않은 지역 변수입니다.
+D:\works\0921\1_variable\1_variable\main.cpp(28,14): warning C4101: 'c' :참조되지 않은 지역 변수입니다.
+  1_variable.vcxproj -> D:\works\0921\1_variable\x64\Debug\1_variable.exe

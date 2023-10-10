@@ -1,0 +1,6 @@
+﻿  test4.cpp
+D:\works\0921\test4\test4.cpp(7,27): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\works\0921\test4\test4.cpp(42,49): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\works\0921\test4\test4.cpp(42,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\works\0921\test4\test4.cpp(42,25): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  test4.vcxproj -> D:\works\0921\test4\x64\Debug\test4.exe
