@@ -2,9 +2,11 @@
 
 
 #include "MoveLeftRight.h"
+#include "Public/Tools/interface_play_obj.h"
+#include "switch.h"//switch정보 include
 
 // Sets default values
-AMoveLeftRight::AMoveLeftRight() :LocX(0), ismoveright(1)
+AMoveLeftRight::AMoveLeftRight() :m_LocX(0), m_ismoveright(1), m_isplay(false)
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -37,6 +39,8 @@ AMoveLeftRight::AMoveLeftRight() :LocX(0), ismoveright(1)
 	//	StaticMesh->SetStaticMesh(sm.Object);//StaticMeshComponent에 StaticMesh 적용
 	//}
 
+
+
 }
 
 AMoveLeftRight::~AMoveLeftRight()
@@ -48,6 +52,10 @@ void AMoveLeftRight::BeginPlay()
 {
 	Super::BeginPlay();
 
+	if (IsValid(m_Switch))//m_Switch가 정상적이라면 밑에코드를 실행한다.
+		m_Switch->FDele_EventOverlap.AddDynamic(this, &AMoveLeftRight::EventOverlap);
+	    //m_Switch를 FDele_EventOverlap에 바인딩하겠다.
+
 }
 
 // Called every frame
@@ -55,32 +63,42 @@ void AMoveLeftRight::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);//오버라이드한 함수인 경우 부모함수를 실행한다
 
+	if (m_isplay == false)
+		return;
+			
 	//ismoveright; //움직일방향
 	//LocX += 1;//오른쪽
-
 	//SetRelativeLocation : 상대적인 위치값을 설정한다
 	//FVector : 언리얼에서 사용하는 3차원 좌표 변수
-	
-	
-	
-	if (ismoveright)
+		
+	if (m_ismoveright)
 	{
-		LocX += 2;
-		StaticMesh->SetRelativeLocation(FVector(LocX, 0, 0));
-		if (LocX >= 300)
+		m_LocX += 2.0f;
+		StaticMesh->SetRelativeLocation(FVector(m_LocX, 0, 0));
+		if (m_LocX >= 300)
 		{
-			ismoveright = false;
+			m_ismoveright = false;
 		}
 	}
 	else
 	{
-		LocX -= 2;
-		StaticMesh->SetRelativeLocation(FVector(LocX, 0, 0));
-		if (LocX <= 0)
+		m_LocX -= 2.0f;
+		StaticMesh->SetRelativeLocation(FVector(m_LocX, 0, 0));
+		if (m_LocX <= 0)
 		{
-			ismoveright = true;
+			m_ismoveright = true;
 		}
 	}
 		
+}
+
+void AMoveLeftRight::EventOverlap(bool IsBegin)//AMoveLeftRight와 EventOverlap가 연결된//bool IsBegin : 파라메타
+{
+	m_isplay = IsBegin; //m_isplay에IsBegin의 값을 넣어준다.
+}
+
+void AMoveLeftRight::Code_DoPlay_Implementation(bool isplay)
+{
+	m_isplay = isplay;
 }
 
